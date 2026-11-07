@@ -1,0 +1,100 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Wstęp do nauki JavaScriptu"
+    },
+    {
+      "id": 2,
+      "title": "Dlaczego warto uczyć się Reacta?"
+    },
+    {
+      "id": 3,
+      "title": "Moja pierwsza aplikacja webowa - case study"
+    },
+    {
+      "id": 4,
+      "title": "CSS Grid vs Flexbox - co wybrać i kiedy?"
+    },
+    {
+      "id": 5,
+      "title": "Jak radzić sobie z błędami w kodzie?"
+    },
+    {
+      "id": 6,
+      "title": "Najlepsze rozszerzenia do Visual Studio Code"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Świetny artykuł! Zaczynam swoją przygodę z JS i bardzo mi to pomogło.",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "Czy planujesz napisać coś o obietnicach (Promises)?",
+      "postId": 1
+    },
+    {
+      "id": 3,
+      "body": "Zdecydowanie się zgadzam, React zmienił sposób, w jaki tworzę interfejsy.",
+      "postId": 2
+    },
+    {
+      "id": 4,
+      "body": "A co myślisz o Vue.js w porównaniu do Reacta?",
+      "postId": 2
+    },
+    {
+      "id": 5,
+      "body": "Dla mnie React na początku był trudny, ale teraz go uwielbiam.",
+      "postId": 2
+    },
+    {
+      "id": 6,
+      "body": "Używam Flexboxa na co dzień, Grida tylko do skomplikowanych układów strony.",
+      "postId": 4
+    },
+    {
+      "id": 7,
+      "body": "Dzięki za te przykłady! Zawsze miałem problem z wyśrodkowaniem elementu.",
+      "postId": 4
+    },
+    {
+      "id": 8,
+      "body": "Grid to potęga, polecam każdemu się go nauczyć.",
+      "postId": 4
+    },
+    {
+      "id": 9,
+      "body": "Moja ulubiona metoda to `display: flex; align-items: center; justify-content: center;` ;)",
+      "postId": 4
+    },
+    {
+      "id": 10,
+      "body": "Używam console.log() do wszystkiego, wiem, że powinienem używać debuggera...",
+      "postId": 5
+    },
+    {
+      "id": 11,
+      "body": "Czytanie logów z błędami to sztuka, którą nabywa się z czasem.",
+      "postId": 5
+    },
+    {
+      "id": 12,
+      "body": "Brakuje na tej liście Prettiera! Poza tym super zestawienie.",
+      "postId": 6
+    },
+    {
+      "id": 13,
+      "body": "Dopiero zainstalowałem VS Code, na pewno sprawdzę te wtyczki.",
+      "postId": 6
+    },
+    {
+      "id": 14,
+      "body": "Live Server to absolutna podstawa przy nauce HTML/CSS.",
+      "postId": 6
+    }
+  ]
+}

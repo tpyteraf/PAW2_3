@@ -1,5 +1,5 @@
 (function () {
-  const example = document.getElementById("example");
+  const json = document.getElementById("json");
   const cw1 = document.getElementById("cw1");
   const cw2 = document.getElementById("cw2");
   const cw3 = document.getElementById("cw3");
@@ -9,8 +9,6 @@
 
   const showLoading = () => loading.classList.remove("hidden");
   const hideLoading = () => loading.classList.add("hidden");
-
-  example.addEventListener("click", function () {});
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -83,6 +81,42 @@
       })
       .catch((error) => {
         answer.innerHTML = "Wystąpił błąd podczas dodawania użytkownika.";
+        console.error(error);
+      });
+  });
+
+  json.addEventListener("click", () => {
+    fetch("db.json")
+      .then((response) => response.json())
+      .then((data) => {
+        let html = "<ul>";
+
+        data.posts.forEach((post) => {
+          html += `<li><strong>${post.title}</strong>`;
+
+          const postComments = data.comments.filter(
+            (comment) => comment.postId === post.id,
+          );
+
+          if (postComments.length > 0) {
+            html += "<ul>";
+            postComments.forEach((comment) => {
+              html += `<li>${comment.body}</li>`;
+            });
+            html += "</ul>";
+          } else {
+            html += " - <i>Brak komentarzy</i>";
+          }
+
+          html += "</li>";
+        });
+
+        html += "</ul>";
+
+        answer.innerHTML = html;
+      })
+      .catch((error) => {
+        answer.innerHTML = "Wystąpił błąd podczas pobierania danych.";
         console.error(error);
       });
   });
