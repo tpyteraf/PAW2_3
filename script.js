@@ -17,38 +17,22 @@
   cw1.addEventListener("click", function () {
     showLoading();
 
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://6aef2ea7b9925b27ce16b7b3.mockapi.io/paw/users")
       .then((response) => response.json())
       .then((el) => delay(1500).then(() => el))
       .then((array) => {
         const rows = array
           .map(
             (el) => `
-              <tr>
-                <td>${el.id}</td>
-                <td>${el.userId}</td>
-                <td class="title">${el.title}</td>
-                <td class="body">${el.body}</td>
-              </tr>
+              <div class="user" style="background: linear-gradient(135deg, ${el.color} 0%, ${el.color2} 100%">
+                <img src=${el.avatar}>
+                <p>${el.name}</p>
+              </div>
             `,
           )
           .join("");
 
-        answer.innerHTML = `
-          <table border="1">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>User ID</th>
-                <th>Tytuł</th>
-                <th>Treść</th>
-              </tr>
-            </thead>
-            <tbody border="0">
-              ${rows}
-            </tbody>
-          </table>
-        `;
+        answer.innerHTML = rows;
         hideLoading();
       })
       .catch((error) => {
@@ -58,32 +42,18 @@
   });
 
   cw2.addEventListener("click", function () {
-    const postId = document.getElementById("cw2_select").value;
+    const userId = document.getElementById("cw2_select").value;
     showLoading();
 
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+    fetch(`https://6aef2ea7b9925b27ce16b7b3.mockapi.io/paw/users/${userId}`)
       .then((response) => response.json())
       .then((el) => {
         console.log(el);
         answer.innerHTML = `
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>User ID</th>
-                <th>Tytuł</th>
-                <th>Treść</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>${el.id}</td>
-                <td>${el.userId}</td>
-                <td class="title">${el.title}</td>
-                <td class="body">${el.body}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="user" style="background: linear-gradient(135deg, ${el.color} 0%, ${el.color2} 100%">
+                <img src=${el.avatar}>
+                <p>${el.name}</p>
+              </div>
         `;
         hideLoading();
       })
@@ -95,10 +65,25 @@
 
   cw3.addEventListener("click", function () {
     answer.textContent = "Processing...";
-    fetch("https://jsonplaceholder.typicode.com/posts", { method: "POST" })
+    fetch("https://6aef2ea7b9925b27ce16b7b3.mockapi.io/paw/users", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "Gromosław Grzmot",
+        avatar:
+          "https://instagram.fktw4-1.fna.fbcdn.net/v/t51.82787-19/660196128_17940204747173706_7322786351475630368_n.jpg?_nc_cat=101&_nc_map=urlgen_bucketless&ig_cache_key=GCDLWSdKLydrhbw-ACChyI1jw59lbmNDAQAB0j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=xuTcnxe53asQ7kNvwHF5n1_&_nc_oc=AdqtrQZfNtf8ofSzMTQIgTFh6pcvXzfht4jYZI8n-FgpiXnx4uysQgY_nOC8CGRd82w&_nc_zt=24&_nc_ht=instagram.fktw4-1.fna&_nc_gid=i3u5qZaGTGFAJQrx7VG1qQ&_nc_ss=7b6a8&oh=00_AQSppkx0frNFq11XUTOZSWanDCqDfnRjNAcMK9UVUS_w8Q&oe=6AF4F538",
+        color: "#0f172a",
+        color2: "#fbbf24",
+      }),
+    })
       .then((response) => response.json())
       .then((json) => {
-        answer.textContent = `Dodano nowy post o ID = ${json.id}`;
+        answer.textContent = `Dodano Gromosława o ID = ${json.id}`;
+        console.log(json);
+      })
+      .catch((error) => {
+        answer.innerHTML = "Wystąpił błąd podczas dodawania użytkownika.";
+        console.error(error);
       });
   });
 })();
